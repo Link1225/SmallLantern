@@ -1,7 +1,6 @@
 package com.link1225.small_lantern.event;
 
-import com.link1225.small_lantern.item.SmallLanternItem;
-import net.minecraft.network.chat.Component;
+import com.link1225.small_lantern.item.SmallLanternItem; // SmallLanternItemをインポート
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;

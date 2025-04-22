@@ -1,15 +1,17 @@
 package com.link1225.small_lantern;
 
+import com.link1225.small_lantern.init.ModBlocks;
 import com.link1225.small_lantern.init.ModItems;
 import com.mojang.logging.LogUtils;
+import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
+import net.minecraftforge.event.server.ServerStartedEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -26,6 +28,7 @@ public class SmallLanternMod {
         modEventBus.addListener(this::commonSetup);
 
         ModItems.ITEMS.register(modEventBus);
+        ModBlocks.BLOCKS.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
 
@@ -37,19 +40,8 @@ public class SmallLanternMod {
     }
 
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
-
-    }
-
-    @SubscribeEvent
-    public void onServerStarting(ServerStartingEvent event) {
-
-    }
-
-    @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-    public static class ClientModEvents {
-        @SubscribeEvent
-        public static void onClientSetup(FMLClientSetupEvent event) {
-
+        if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
+            event.accept(ModItems.SMALL_LANTERN.get());
         }
     }
 }
