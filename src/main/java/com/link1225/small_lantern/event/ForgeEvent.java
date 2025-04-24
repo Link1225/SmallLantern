@@ -18,11 +18,4 @@ public final class ForgeEvent {
             smallLanternItem.removePreviousLightBlock(player.level());
         }
     }
-
-    @SubscribeEvent
-    public static void onLivingEntityDeath(LivingDeathEvent event) {
-        if(event.getEntity() instanceof Player player && player.getItemInHand(InteractionHand.MAIN_HAND).getItem() instanceof SmallLanternItem smallLanternItem) {
-            smallLanternItem.removePreviousLightBlock(player.level());
-        }
-    }
 }

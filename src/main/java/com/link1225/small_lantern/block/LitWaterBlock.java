@@ -5,7 +5,7 @@ import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Fluids;
 
-public class LitWaterBlock extends LiquidBlock implements ILitBLock {
+public class LitWaterBlock extends LiquidBlock {
     public LitWaterBlock() {
         super(Fluids.WATER, BlockBehaviour.Properties.copy(Blocks.WATER).lightLevel(state -> 15));
     }

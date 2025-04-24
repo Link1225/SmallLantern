@@ -1,5 +1,6 @@
 package com.link1225.small_lantern.item;
 
+import com.link1225.small_lantern.init.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
@@ -7,6 +8,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.Nullable;
 
 public class SmallLanternItem extends Item {
@@ -21,8 +23,8 @@ public class SmallLanternItem extends Item {
     public void inventoryTick(ItemStack stack, Level level, Entity entity, int slotId, boolean isSelected) {
         super.inventoryTick(stack, level, entity, slotId, isSelected);
 
-        if (!level.isClientSide && entity instanceof Player player && !player.isDeadOrDying()) {
-            if(!isSelected) {
+        if (!level.isClientSide && entity instanceof Player player) {
+            if(!isSelected || player.isDeadOrDying()) {
                 removePreviousLightBlock(level);
                 return;
             }
@@ -33,7 +35,7 @@ public class SmallLanternItem extends Item {
 
             removePreviousLightBlock(level, false);
 
-            if (level.getBlockState(currentPos).getBlock() != Blocks.LIGHT) level.setBlockAndUpdate(currentPos, Blocks.LIGHT.defaultBlockState());
+            if (ModBlocks.vanilla2LitBlocksMap.containsValue(ForgeRegistries.BLOCKS.getHolder(level.getBlockState(currentPos).getBlock()))) level.setBlockAndUpdate(currentPos, Blocks.LIGHT.defaultBlockState());
 
             previousLightBlockPos = currentPos;
         }
