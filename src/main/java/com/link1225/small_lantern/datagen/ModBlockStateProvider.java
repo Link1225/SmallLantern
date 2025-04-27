@@ -20,7 +20,7 @@ public final class ModBlockStateProvider extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
-        for(Map.Entry<Block, RegistryObject<? extends Block>> vanilla2LitBlockEntry : ModBlocks.vanilla2LitSimpleBlocksMap.entrySet()) {
+        for(Map.Entry<Block, RegistryObject<Block>> vanilla2LitBlockEntry : ModBlocks.vanilla2LitSimpleBlocksMap.entrySet()) {
             simpleBlock(vanilla2LitBlockEntry.getValue().get(), models().getExistingFile(ResourceLocation.tryParse("block/" + Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(vanilla2LitBlockEntry.getKey())).getPath())));
         }
     }

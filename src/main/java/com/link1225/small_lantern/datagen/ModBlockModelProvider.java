@@ -21,7 +21,7 @@ public final class ModBlockModelProvider extends BlockModelProvider {
 
     @Override
     protected void registerModels() {
-        for(Map.Entry<Block, RegistryObject<LitFlowerBlock>> vanilla2LitFlowerBlockEntry : ModBlocks.vanilla2LitFlowerBlockMap.entrySet()) {
+        for(Map.Entry<Block, RegistryObject<Block>> vanilla2LitFlowerBlockEntry : ModBlocks.vanilla2LitFlowerBlockMap.entrySet()) {
             cross(vanilla2LitFlowerBlockEntry.getValue().getId().getPath(), ResourceLocation.parse("block/" + Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(vanilla2LitFlowerBlockEntry.getKey())).getPath()));
         }
     }

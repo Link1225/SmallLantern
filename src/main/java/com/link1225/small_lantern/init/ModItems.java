@@ -2,9 +2,7 @@ package com.link1225.small_lantern.init;
 
 import com.link1225.small_lantern.SmallLanternMod;
 import com.link1225.small_lantern.item.SmallLanternItem;
-import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Item.Properties;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
